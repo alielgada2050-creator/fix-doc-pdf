@@ -1,0 +1,15 @@
+{
+  "name": "wathiq-pdf",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Free bilingual (Arabic/English) PDF & document toolkit that runs locally in the browser, on desktop and mobile.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "start": "node build.mjs && node server/odoo-proxy.mjs",
+    "serve": "node build.mjs && npx -y http-server@14.1.1 dist -p 8080 -c-1",
+    "test": "python3 tests/smoke_test.py"
+  },
+  "engines": { "node": ">=18" },
+  "license": "MIT"
+}

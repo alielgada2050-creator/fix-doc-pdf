@@ -1,0 +1,11 @@
+node_modules
+**/node_modules
+dist
+shell
+tests
+mobile
+tessdata/*.js
+server/.env
+server/data
+.git
+*.zip

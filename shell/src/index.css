@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* shadcn/ui tokens mapped to Wathiq's three skins (light = Arctic Frost + registry ink, dark = Ocean Depths, bright = Tech Innovation) */
+@layer base {
+  :root {
+    --sh-background: 225 33% 97%; --sh-foreground: 229 39% 13%; --sh-card: 0 0% 100%; --sh-card-foreground: 229 39% 13%;
+    --sh-popover: 0 0% 100%; --sh-popover-foreground: 229 39% 13%; --sh-primary: 224 64% 40%; --sh-primary-foreground: 0 0% 100%;
+    --sh-secondary: 220 30% 94%; --sh-secondary-foreground: 229 39% 13%; --sh-muted: 220 30% 94%; --sh-muted-foreground: 225 16% 41%;
+    --sh-accent: 222 58% 93%; --sh-accent-foreground: 224 64% 40%; --sh-destructive: 4 76% 40%; --sh-destructive-foreground: 0 0% 100%;
+    --sh-border: 224 27% 88%; --sh-input: 224 27% 88%; --sh-ring: 224 64% 40%; --radius: 0.625rem; --plate: 0 0% 100%;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]):not([data-skin]) {
+    --sh-background: 222 51% 9%; --sh-foreground: 220 60% 94%; --sh-card: 221 44% 13%; --sh-card-foreground: 220 60% 94%;
+    --sh-popover: 221 44% 13%; --sh-popover-foreground: 220 60% 94%; --sh-primary: 216 100% 72%; --sh-primary-foreground: 222 69% 9%;
+    --sh-secondary: 222 42% 18%; --sh-secondary-foreground: 220 60% 94%; --sh-muted: 222 42% 18%; --sh-muted-foreground: 218 30% 71%;
+    --sh-accent: 219 55% 20%; --sh-accent-foreground: 216 100% 80%; --sh-destructive: 4 100% 75%; --sh-destructive-foreground: 222 69% 9%;
+    --sh-border: 223 35% 23%; --sh-input: 223 35% 23%; --sh-ring: 216 100% 72%; --plate: 0 0% 100%; } }
+  :root[data-theme="dark"]:not([data-skin]), :root[data-skin="dark"] {
+    --sh-background: 222 51% 9%; --sh-foreground: 220 60% 94%; --sh-card: 221 44% 13%; --sh-card-foreground: 220 60% 94%;
+    --sh-popover: 221 44% 13%; --sh-popover-foreground: 220 60% 94%; --sh-primary: 216 100% 72%; --sh-primary-foreground: 222 69% 9%;
+    --sh-secondary: 222 42% 18%; --sh-secondary-foreground: 220 60% 94%; --sh-muted: 222 42% 18%; --sh-muted-foreground: 218 30% 71%;
+    --sh-accent: 219 55% 20%; --sh-accent-foreground: 216 100% 80%; --sh-destructive: 4 100% 75%; --sh-destructive-foreground: 222 69% 9%;
+    --sh-border: 223 35% 23%; --sh-input: 223 35% 23%; --sh-ring: 216 100% 72%; --plate: 0 0% 100%;
+  }
+  :root[data-skin="light"] { --sh-background: 225 33% 97%; --sh-foreground: 229 39% 13%; --sh-card: 0 0% 100%; --sh-popover: 0 0% 100%; --sh-primary: 224 64% 40%; --sh-primary-foreground: 0 0% 100%; --sh-muted: 220 30% 94%; --sh-muted-foreground: 225 16% 41%; --sh-accent: 222 58% 93%; --sh-accent-foreground: 224 64% 40%; --sh-border: 224 27% 88%; --sh-input: 224 27% 88%; --sh-ring: 224 64% 40%; --sh-card-foreground: 229 39% 13%; --sh-popover-foreground: 229 39% 13%; --sh-secondary: 220 30% 94%; --sh-secondary-foreground: 229 39% 13%; --sh-destructive: 4 76% 40%; }
+  :root[data-skin="bright"] {
+    --sh-background: 37 100% 95%; --sh-foreground: 257 42% 15%; --sh-card: 0 0% 100%; --sh-card-foreground: 257 42% 15%;
+    --sh-popover: 0 0% 100%; --sh-popover-foreground: 257 42% 15%; --sh-primary: 18 100% 55%; --sh-primary-foreground: 0 0% 100%;
+    --sh-secondary: 36 100% 93%; --sh-secondary-foreground: 257 42% 15%; --sh-muted: 36 100% 93%; --sh-muted-foreground: 290 12% 40%;
+    --sh-accent: 28 100% 92%; --sh-accent-foreground: 18 100% 45%; --sh-destructive: 343 82% 50%; --sh-destructive-foreground: 0 0% 100%;
+    --sh-border: 35 86% 85%; --sh-input: 35 86% 85%; --sh-ring: 18 100% 55%; --plate: 0 0% 100%; --radius: 0.9rem;
+  }
+  /* minimal reset (Tailwind preflight is off so the editor views keep their own styling) */
+  *, ::before, ::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: hsl(var(--sh-border)); }
+  img { max-width: 100%; }
+  html, body { margin: 0; }
+  button { background-color: transparent; color: inherit; font: inherit; }
+  [hidden] { display: none !important; }
+}
+#root { height: 100%; }
+.shell-head { position: relative; z-index: 6; }
+.shell-head::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: var(--band); }
+.navtab[aria-current="page"] { color: hsl(var(--sh-primary)); box-shadow: inset 0 -2px 0 hsl(var(--sh-primary)); }
+.logo-plate { background: hsl(var(--plate)); }
+.legacy-views { display: contents; }
+
+/* v6 header: brand lockup, larger organisation logos, pill navigation in every skin */
+.shell-head { box-shadow: 0 1px 0 hsl(var(--sh-border)), 0 8px 24px -18px rgba(20, 28, 60, .35); }
+.brand-mark svg { display: block; filter: drop-shadow(0 6px 10px rgba(230, 90, 0, .28)); }
+.brand-name { font-family: "El Messiri", "Alexandria", system-ui, sans-serif; font-weight: 700; font-size: 30px; line-height: 1.25; letter-spacing: 0; }
+.brand-pdf { font-family: "Alexandria", system-ui, sans-serif; font-weight: 700; font-size: 11px; padding: 2px 6px; border-radius: 6px; color: #fff; background: linear-gradient(135deg, #ff8a1f, #ff3d5a); transform: translateY(-4px); }
+.brand-sub { margin-top: 6px; font-size: 12px; font-weight: 500; color: hsl(var(--sh-muted-foreground)); }
+@media (max-width: 639px) { .brand-name { font-size: 26px; } }
+.logo-plate { box-shadow: 0 1px 2px rgba(20, 28, 60, .06), 0 6px 16px -10px rgba(20, 28, 60, .35); transition: transform .15s; }
+.logo-plate:hover { transform: translateY(-1px); }
+.logo-row { padding-bottom: 4px; }
+.logo-row > div > div { justify-content: center; }
+.head-nav { height: 56px; padding-bottom: 8px; }
+.navtab { color: hsl(var(--sh-muted-foreground)); transition: background-color .15s, color .15s; }
+.navtab:hover { background: hsl(var(--sh-accent)); color: hsl(var(--sh-foreground)); }
+.navtab[aria-current="page"] { box-shadow: none; color: hsl(var(--sh-primary)); background: hsl(var(--sh-accent)); }
+:root[data-skin="bright"] .brand-sub { color: rgba(42, 19, 0, .7); }
+:root[data-skin="bright"] .brand-mark svg { filter: drop-shadow(0 6px 10px rgba(150, 50, 0, .35)); }
+
+.skip-link { position: fixed; inset-inline-start: 12px; top: -60px; z-index: 200; padding: 10px 16px; border-radius: 10px; background: hsl(var(--sh-foreground)); color: hsl(var(--sh-background)); font-weight: 700; text-decoration: none; transition: top .15s; }
+.skip-link:focus { top: 12px; }
+.brand-sub { line-height: 1.4; }

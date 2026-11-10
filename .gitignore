@@ -1,0 +1,10 @@
+dist/
+node_modules/
+server/.env
+data/
+server/data/
+tessdata/*.js
+mobile/www/
+mobile/android/
+shell/.build/
+*.zip

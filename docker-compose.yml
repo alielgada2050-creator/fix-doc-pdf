@@ -1,0 +1,10 @@
+# docker compose up -d   →  http://localhost:8080
+services:
+  wathiq:
+    image: ghcr.io/OWNER/REPO:latest   # or: build: .
+    ports: ["8080:8080"]
+    env_file: [server/.env]            # optional: Odoo, AI, e-mail/WhatsApp login (see server/.env.example)
+    volumes: ["wathiq-data:/data"]
+    restart: unless-stopped
+volumes:
+  wathiq-data:

@@ -1,0 +1,7 @@
+{
+  "appId": "app.wathiq.pdf",
+  "appName": "وثيق PDF",
+  "webDir": "www",
+  "android": { "allowMixedContent": false, "captureInput": true },
+  "server": { "androidScheme": "https" }
+}
